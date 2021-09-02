@@ -16,7 +16,7 @@ public class BuzzPage extends LoginPage {
     @Step("Create post")
     public void buzzPageFields(){
         buzzBtn.click();
-        createPost.sendKeys("Hello my friends.");
+        createPost.sendKeys("Hello friends.");
         postBtn.click();
     }
 }

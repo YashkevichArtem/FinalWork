@@ -110,8 +110,8 @@ class PagesTest {
         pim.jobDetails();
         Assertions.assertEquals("2018-10-03", pim.joinDate.getValue());
 
-//        pim.repDetails();
-//        Assertions.assertEquals("Linda Anderson", pim.supName.getText());
+        pim.repDetails();
+        Assertions.assertEquals("Linda Anderson", pim.supName.getText());
     }
 
     @Order(9)
@@ -132,6 +132,16 @@ class PagesTest {
         buzz.login();
         buzz.buzzPageFields();
         Assertions.assertEquals("Hello my friends.", buzz.checkTextPost.getValue());
+    }
+
+    @Order(11)
+    @Test
+    public void addEmployeeTest() throws IOException {
+        PIM pim = new PIM();
+        pim.openLoginPage();
+        pim.login();
+        pim.newEmployee();
+        Assertions.assertEquals("Successfully Updated", pim.completeMessage.getText());
     }
 
 }

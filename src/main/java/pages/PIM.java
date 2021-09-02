@@ -5,6 +5,7 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.sleep;
 
 public class PIM extends AddUser{
     SelenideElement pimModule = $("#menu_pim_viewPimModule");
@@ -20,7 +21,7 @@ public class PIM extends AddUser{
 
     SelenideElement jobDetails = $("a[href*=\"JobDetails/\"]");
     SelenideElement joinDate = $("#job_joined_date");
-    SelenideElement editBtn = $("#btnSave");
+    SelenideElement saveBtn = $("#btnSave");
     SelenideElement startDateBtn = $("#job_contract_start_date");
     SelenideElement endDateBtn = $("#job_contract_end_date");
 
@@ -40,19 +41,38 @@ public class PIM extends AddUser{
         contactDetails.click();
     }
 
-    //Если супервайзера кто-то уберёт, то выдаёт ошибку
-//    @Step("Check report-to details")
-//    public void repDetails(){
-//        reportTo.click();
-//    }
+    @Step("Check report-to details")
+    public void repDetails(){
+        reportTo.click();
+    }
 
     @Step("Check job details")
     public void jobDetails(){
         jobDetails.click();
-        editBtn.click();
+        saveBtn.click();
         startDateBtn.setValue("2021-01-01");
         endDateBtn.setValue("2024-01-01");
-        editBtn.click();
+        saveBtn.click();
+    }
+
+    SelenideElement addEmpBtn = $("#menu_pim_addEmployee");
+    SelenideElement firstNameField = $("#firstName");
+    SelenideElement lastNameField = $("#lastName");
+    SelenideElement subUnitBtn = $(By.xpath("//*[@id=\"job_sub_unit\"]/option[8]"));
+
+    @Step("Add employee")
+    public void newEmployee(){
+        pimModule.click();
+        addEmpBtn.click();
+        firstNameField.sendKeys("Senla");
+        lastNameField.sendKeys("Employee");
+        saveBtn.click();
+        jobDetails.click();
+        saveBtn.click();
+        startDateBtn.setValue("2021-01-01");
+        endDateBtn.setValue("2024-01-01");
+        subUnitBtn.click();
+        saveBtn.click();
     }
 
 

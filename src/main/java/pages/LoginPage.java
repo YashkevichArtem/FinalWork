@@ -41,10 +41,5 @@ public class LoginPage {
         welcomePanel.click();
         logout.click();
     }
-
-    @Step("Forgot your password")
-    public void forgotPass(){
-
-    }
 }
 

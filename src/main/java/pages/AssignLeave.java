@@ -17,6 +17,7 @@ public class AssignLeave extends AddUser{
     SelenideElement calendarBtnFrom = $("#assignleave_txtFromDate");
     SelenideElement calendarBtnTo = $("#assignleave_txtToDate");
     SelenideElement assignButton = $("#assignBtn");
+    SelenideElement confirmOkBtn = $("#confirmOkButton");
 
     @Step("Assign leave")
     public void assignLeave(){
@@ -27,5 +28,6 @@ public class AssignLeave extends AddUser{
         calendarBtnFrom.shouldBe(Condition.visible).setValue("2021-09-09").click();
         calendarBtnTo.shouldBe(Condition.visible).setValue("2021-09-15").click();
         assignButton.pressEnter();
+        confirmOkBtn.pressEnter();
     }
 }
