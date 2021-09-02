@@ -23,7 +23,7 @@ public class AddUser extends LoginPage {
         btnAdd.click();
         userRoleField.shouldBe(Condition.visible);
         nameField.shouldBe(Condition.visible).sendKeys("Manali Kulkarni");
-        userField.shouldBe(Condition.visible).sendKeys("Vasiliiyy");
+        userField.shouldBe(Condition.visible).sendKeys("Vasiliykay");
         userPass.shouldBe(Condition.visible).sendKeys("Qwertyui");
         confPass.shouldBe(Condition.visible).sendKeys("Qwertyui");
         btnSave.click();
