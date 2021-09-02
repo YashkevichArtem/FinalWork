@@ -1,7 +1,6 @@
 package pages;
 
 import com.codeborne.selenide.Condition;
-import jdk.nashorn.internal.ir.annotations.Ignore;
 import org.junit.jupiter.api.*;
 
 import java.io.IOException;
@@ -37,7 +36,6 @@ class PagesTest {
         addUser.openLoginPage();
         addUser.login();
         addUser.add();
-        addUser.completeMessage.shouldBe(Condition.visible);
         Assertions.assertEquals("Successfully Saved", addUser.completeMessage.getText());
     }
 
@@ -71,15 +69,14 @@ class PagesTest {
         addCandidate.addCandidate();
     }
 
-    @Order(6)
-    @Ignore
-    //Данный тест не может быть выполнен пока не будет исправлен баг с заполнением двух форм календаря (from/to date)
+    @Order(8)
+    @Test
     public void assignLeaveTest() throws IOException {
         AssignLeave assLeave = new AssignLeave();
         assLeave.openLoginPage();
         assLeave.login();
         assLeave.assignLeave();
-        Assertions.assertEquals("Successfully Saved", assLeave.completeMessage.getText());
+        Assertions.assertEquals("Successfully Assigned", assLeave.completeMessage.getText());
     }
 
     @Order(7)
@@ -96,7 +93,7 @@ class PagesTest {
         Assertions.assertEquals("Pending Leave Requests", dashboard.requestsPanel.getText());
     }
 
-    @Order(8)
+    @Order(6)
     @Test
     public void checkPimDetailsTest() throws IOException{
         PIM pim = new PIM();
@@ -113,8 +110,8 @@ class PagesTest {
         pim.jobDetails();
         Assertions.assertEquals("2018-10-03", pim.joinDate.getValue());
 
-        pim.repDetails();
-        Assertions.assertEquals("Linda Anderson", pim.supName.getText());
+//        pim.repDetails();
+//        Assertions.assertEquals("Linda Anderson", pim.supName.getText());
     }
 
     @Order(9)

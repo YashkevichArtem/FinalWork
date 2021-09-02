@@ -20,6 +20,9 @@ public class PIM extends AddUser{
 
     SelenideElement jobDetails = $("a[href*=\"JobDetails/\"]");
     SelenideElement joinDate = $("#job_joined_date");
+    SelenideElement editBtn = $("#btnSave");
+    SelenideElement startDateBtn = $("#job_contract_start_date");
+    SelenideElement endDateBtn = $("#job_contract_end_date");
 
     SelenideElement reportTo = $("a[href*=\"ReportToDetails/\"]");
     SelenideElement supName = $("td.supName");
@@ -37,14 +40,19 @@ public class PIM extends AddUser{
         contactDetails.click();
     }
 
+    //Если супервайзера кто-то уберёт, то выдаёт ошибку
+//    @Step("Check report-to details")
+//    public void repDetails(){
+//        reportTo.click();
+//    }
+
     @Step("Check job details")
     public void jobDetails(){
         jobDetails.click();
-    }
-
-    @Step("Check report-to details")
-    public void repDetails(){
-        reportTo.click();
+        editBtn.click();
+        startDateBtn.setValue("2021-01-01");
+        endDateBtn.setValue("2024-01-01");
+        editBtn.click();
     }
 
 
