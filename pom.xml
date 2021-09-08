@@ -90,7 +90,7 @@
                     <systemProperties>
                         <property>
                             <name>allure.results.directory</name>
-                            <value>C:\Users\User\IdeaProjects\FinalWork\target\allure-results</value>
+                            <value>C:\Windows\System32\config\systemprofile\AppData\Local\Jenkins\.jenkins\workspace\test-jobb\allure-results</value>
 <!--                            <value>${project.build.directory}/allure-results</value>-->
                         </property>
                     </systemProperties>
